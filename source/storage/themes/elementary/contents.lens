@@ -23,26 +23,26 @@
 	</koken:head>
 </koken:load>
 
-<koken:load limit="{{ settings.content_index_limit }}">
-
-<ol class="thumbs">
-
-	<koken:loop>
-		<koken:include file="layouts/content_list_item.html" />
-	</koken:loop>
-
-</ol>
-
-<koken:include file="layouts/pagination.html" />
-
-<koken:else>
-
-	<koken:note>
-
-		No content found. Upload some in the Library.
-
-	</koken:note>
-
+<!-- Loads images and videos in contents.lens -->
+<koken:load>
+    <!-- Parent element for the whole grid -->
+    <div id="kgrid">
+        <!-- Loop over every returned item -->
+        <koken:loop>
+            <!-- Publish a medium-sized image for each -->
+            <div class="kgrid_item">
+                <koken:include file="layouts/content_list_item.html" />
+            </div>
+        </koken:loop>
+    </div>
 </koken:load>
+
+<script>
+    $(function() {
+        $('#kgrid').pillar({
+            items: '.kgrid_item'
+        });
+    });
+</script>
 
 <koken:include file="layouts/footer.html" />
