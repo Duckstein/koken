@@ -23,7 +23,7 @@
 	</koken:head>
 </koken:load>
 
-<koken:load>
+<koken:load limit="{{ settings.content_index_limit }}">
     <div id="kgrid">
         <koken:loop>
             <div class="kgrid_item">
@@ -31,6 +31,7 @@
             </div>
         </koken:loop>
     </div>
+    <koken:include file="layouts/pagination.html" />
 </koken:load>
 
     <script>

@@ -27,11 +27,7 @@
 
 <koken:include file="layouts/album_title_header.html" />
 
-<ol class="thumbs">
-
-	<koken:include file="layouts/album_detail_thumbs.html" />
-
-</ol>
+<koken:include file="layouts/album_detail_thumbs.html" />
 
 <koken:include file="layouts/pagination.html" />
 
@@ -44,5 +40,19 @@
 	</koken:note>
 
 </koken:load>
+
+    <script>
+        $(function() {
+            $('#kgrid').pillar({
+                items: '.kgrid_item',
+                spacing: 10,
+                gutter: 0,
+                flush: false,
+                columns: {
+                    'max': 3
+                }
+            });
+        });
+    </script>
 
 <koken:include file="layouts/footer.html" />
