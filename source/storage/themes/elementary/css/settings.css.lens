@@ -42,12 +42,20 @@ figure {
     margin-bottom: 3.2rem
 }
 
+#kgrid figure {
+    margin-bottom: 0
+}
+
 figure .figimg {
     text-align: center
 }
 
 figure img {
     margin-bottom: 1rem
+}
+
+#kgrid figure img {
+    margin-bottom: 0
 }
 
 figcaption h3 {

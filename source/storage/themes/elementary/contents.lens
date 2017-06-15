@@ -23,13 +23,9 @@
 	</koken:head>
 </koken:load>
 
-<!-- Loads images and videos in contents.lens -->
 <koken:load>
-    <!-- Parent element for the whole grid -->
     <div id="kgrid">
-        <!-- Loop over every returned item -->
         <koken:loop>
-            <!-- Publish a medium-sized image for each -->
             <div class="kgrid_item">
                 <koken:include file="layouts/content_list_item.html" />
             </div>
@@ -37,12 +33,18 @@
     </div>
 </koken:load>
 
-<script>
-    $(function() {
-        $('#kgrid').pillar({
-            items: '.kgrid_item'
+    <script>
+        $(function() {
+            $('#kgrid').pillar({
+                items: '.kgrid_item',
+                spacing: 10,
+                gutter: 0,
+                flush: false,
+                columns: {
+                    'max': 3
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 <koken:include file="layouts/footer.html" />
