@@ -308,6 +308,222 @@
 		"Layout": {
 			"icon": "layout",
 			"settings": {
+				"content_index_limit": {
+					"label": "Items per page",
+					"type": "slider",
+					"min": 8,
+					"max": 48,
+					"step": 1,
+					"value": 21,
+					"scope": [ "contents", "favorites", "archive.contents" ]
+				},
+				"albums_index_limit": {
+					"label": "Items per page",
+					"type": "slider",
+					"min": 8,
+					"max": 48,
+					"step": 1,
+					"value": 12,
+					"scope": [ "albums", "archive.albums", "sets", "set" ]
+				},
+				"albums_detail_limit": {
+					"label": "Items per page",
+					"type": "slider",
+					"min": 10,
+					"max": 100,
+					"step": 1,
+					"value": 21,
+					"scope": [ "album" ]
+				},
+				"cover_styles": {
+					"label": "Cover Styles",
+					"type": "select",
+					"options": [
+						{ "label": "Plain text", "value": "text_cover" },
+						{ "label": "Cover image", "value": "image_cover" },
+						{ "label": "No cover", "value": "no_cover" }
+					],
+					"value": "image_cover",
+					"note": "Cover style for albums pages, favorites and contents.",
+					"note_align": "left",
+					"scope": [ "album", "contents", "favorites", "set" ]
+				},
+				"Album Cover settings": {
+					"collapse": true,
+					"album_cover_text_color": {
+						"label": "Text color",
+						"type": "color",
+						"value": "#aaa",
+						"control_first": true,
+						"dependencies": {
+							"evaluate": "any",
+							"conditions": [
+								{ "option": "cover_styles", "equals": "image_cover" },
+								{ "option": "cover_styles", "equals": "text_cover" }
+							]
+						},
+						"scope": [  "album", "contents", "favorites", "set"  ]
+					},
+					"album_cover_owerlay_opacity": {
+						"label": "Opacity",
+						"type": "slider",
+						"min": 1,
+						"max": 99,
+						"step": 1,
+						"value": 75,
+						"dependencies": {
+							"evaluate": "any",
+							"conditions": [
+								{ "option": "cover_styles", "equals": "image_cover" },
+								{ "option": "cover_styles", "equals": "text_cover" }
+							]
+						},
+						"scope": [  "album", "contents", "favorites", "set"  ]
+					},
+					"album_cover_owerlay_color": {
+						"label": "Overlay color",
+						"type": "color",
+						"with_alpha": true,
+						"value": "rgba(0,0,0,.3)",
+						"control_first": true,
+						"dependencies": {
+							"evaluate": "any",
+							"conditions": [
+								{ "option": "cover_styles", "equals": "image_cover" },
+								{ "option": "cover_styles", "equals": "text_cover" }
+							]
+						},
+						"scope": [  "album", "contents", "favorites", "set"  ]
+					},
+					"album_cover_title": {
+						"label": "Album title",
+						"type": "boolean",
+						"value": true,
+						"dependencies": {
+							"evaluate": "any",
+							"conditions": [
+								{ "option": "cover_styles", "equals": "image_cover" },
+								{ "option": "cover_styles", "equals": "text_cover" }
+							]
+						},
+						"scope": [ "album", "set" ]
+					},
+					"cover_title_min": {
+						"label": "Title min size",
+						"type": "slider",
+						"min": 10,
+						"max": 40,
+						"step": 1,
+						"value": 30,
+						"suffix": "px",
+						"dependencies": {
+							"evaluate": "all",
+							"conditions": [
+								{ "option": "cover_styles", "equals": "image_cover" }
+							]
+						},
+						"scope": [ "album", "set" ]
+					},
+					"cover_title_max": {
+						"label": "Title max size",
+						"type": "slider",
+						"min": 40,
+						"max": 100,
+						"step": 1,
+						"value": 60,
+						"suffix": "px",
+						"dependencies": {
+							"evaluate": "all",
+							"conditions": [
+								{ "option": "cover_styles", "equals": "image_cover" }
+							]
+						},
+						"scope": [ "album", "set" ]
+					},
+					"cover_title_ls": {
+						"label": "Title spacing",
+						"type": "slider",
+						"min": -10,
+						"max": 10,
+						"step": 1,
+						"value": -2,
+						"suffix": "px",
+						"dependencies": {
+							"evaluate": "all",
+							"conditions": [
+								{ "option": "cover_styles", "equals": "image_cover" }
+							]
+						},
+						"scope": [ "album", "set" ]
+					},
+					"album_cover_description": {
+						"label": "Album descr.",
+						"type": "boolean",
+						"value": true,
+						"dependencies": {
+							"evaluate": "any",
+							"conditions": [
+								{ "option": "cover_styles", "equals": "image_cover" },
+								{ "option": "cover_styles", "equals": "text_cover" }
+							]
+						},
+						"scope": [ "album", "set" ]
+					},
+					"album_cover_time": {
+						"label": "Album date",
+						"type": "boolean",
+						"value": true,
+						"dependencies": {
+							"evaluate": "any",
+							"conditions": [
+								{ "option": "cover_styles", "equals": "image_cover" },
+								{ "option": "cover_styles", "equals": "text_cover" }
+							]
+						},
+						"scope": [ "album", "set" ]
+					},
+					"album_cover_cats": {
+						"label": "Album categories",
+						"type": "boolean",
+						"value": true,
+						"dependencies": {
+							"evaluate": "any",
+							"conditions": [
+								{ "option": "cover_styles", "equals": "image_cover" },
+								{ "option": "cover_styles", "equals": "text_cover" }
+							]
+						},
+						"scope": [ "album", "set" ]
+					},
+					"album_cover_tags": {
+						"label": "Album tags",
+						"type": "boolean",
+						"value": false,
+						"dependencies": {
+							"evaluate": "any",
+							"conditions": [
+								{ "option": "cover_styles", "equals": "image_cover" },
+								{ "option": "cover_styles", "equals": "text_cover" }
+							]
+						},
+						"scope": [ "album", "set" ]
+					},
+					"album_cover_downarrow": {
+						"label": "Down arrow",
+						"type": "select",
+						"options": [
+							{ "label": "Arrow One", "value": "one" },
+							{ "label": "Arrow Two", "value": "two" },
+							{ "label": "Arrow Three", "value": "three" },
+							{ "label": "Arrow Four", "value": "four" },
+							{ "label": "Arrow Five", "value": "five" },
+							{ "label": "Arrow Six", "value": "six" },
+							{ "label": "Arrow Seven", "value": "seven" }
+						],
+						"value": "six",
+						"scope": [  "album", "contents", "favorites", "set", "sets"  ]
+					}
+				},
 				"index_show_slideshow": {
 					"label": "Show slideshow",
 					"type": "boolean",
@@ -360,33 +576,6 @@
 					"value": true,
 					"control_first": true,
 					"scope": [ "index" ]
-				},
-				"albums_index_limit": {
-					"label": "Items per page",
-					"type": "slider",
-					"min": 8,
-					"max": 48,
-					"step": 1,
-					"value": 12,
-					"scope": [ "albums", "archive.albums", "sets", "set" ]
-				},
-				"albums_detail_limit": {
-					"label": "Items per page",
-					"type": "slider",
-					"min": 10,
-					"max": 100,
-					"step": 1,
-					"value": 21,
-					"scope": [ "album" ]
-				},
-				"content_index_limit": {
-					"label": "Items per page",
-					"type": "slider",
-					"min": 8,
-					"max": 48,
-					"step": 1,
-					"value": 21,
-					"scope": [ "contents", "favorites", "archive.contents" ]
 				}
 			}
 		},
