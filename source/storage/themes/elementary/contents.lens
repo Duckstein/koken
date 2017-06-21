@@ -24,25 +24,28 @@
 </koken:load>
 
 <koken:load limit="{{ settings.content_index_limit }}">
-
-<ol class="thumbs">
-
-	<koken:loop>
-		<koken:include file="layouts/content_list_item.html" />
-	</koken:loop>
-
-</ol>
-
-<koken:include file="layouts/pagination.html" />
-
-<koken:else>
-
-	<koken:note>
-
-		No content found. Upload some in the Library.
-
-	</koken:note>
-
+    <div id="kgrid">
+        <koken:loop>
+            <div class="kgrid_item">
+                <koken:include file="layouts/content_list_item.html" />
+            </div>
+        </koken:loop>
+    </div>
+    <koken:include file="layouts/pagination.html" />
 </koken:load>
+
+    <script>
+        $(function() {
+            $('#kgrid').pillar({
+                items: '.kgrid_item',
+                spacing: 10,
+                gutter: 0,
+                flush: false,
+                columns: {
+                    'max': 3
+                }
+            });
+        });
+    </script>
 
 <koken:include file="layouts/footer.html" />
